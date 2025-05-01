@@ -41,7 +41,7 @@ qty_try = 3
  
 while qty_try:
     qty_try -= 1
-    if  data.get(input("👤 Vložte jméno uživatele: ")) == input("👤 Vložte heslo uživatele: "):
+    if  data.get(input(" Vložte jméno uživatele: ")) == input("Vložte heslo uživatele: "):
         flag = True
         break
     elif qty_try != 0:
@@ -88,7 +88,7 @@ print(f"Počet slov začínajících velkým písmenem: {'*' * count_upper_case_
 print(f"Počet slov psaných velkými písmeny: {'*' * count_upper_case_words} {count_upper_case_words}")
 print(f"Počet slov psaných malými písmeny: {'*' * count_lower_case_letters} {count_lower_case_letters}")
 print(f"Počet čísel: {'*' * count_numbers} {count_numbers}")
-print(f"Suma všech čísel: {sum_numbers}")
+print(f"The sum of all the numbers {sum_numbers}")
 
 # Sloupcový graf: četnost délek slov
 word_lengths = [len(word) for word in re.findall(r'\b\w+\b', text)]
