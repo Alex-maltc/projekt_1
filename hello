@@ -1,10 +1,8 @@
 """
 projekt_1.py: první projekt do Engeto Online Python Akademie
-
 author: Aleksei Maltcev
 email: alexmal@post.cz
 """
-
 import re
 TEXTS = {
     "text1": '''Situated about 10 miles west of Kemmerer,
@@ -43,7 +41,7 @@ qty_try = 3
  
 while qty_try:
     qty_try -= 1
-    if  data.get(input("Vložte jméno uživatele: ")) == input("Vložte heslo uživatele: "):
+    if  data.get(input("👤 Vložte jméno uživatele: ")) == input("👤 Vložte heslo uživatele: "):
         flag = True
         break
     elif qty_try != 0:
@@ -57,10 +55,10 @@ else:
 
 
 
-choice = input("📖 Vyberte text (1, 2 nebo 3): ")
+choice = input("Vyberte text (1, 2 nebo 3): ")
 
 if choice not in ["1", "2", "3"]:
-    print("❌ Neplatná volba! Program končí.")
+    print("Neplatná volba! Program končí.")
     exit()
 
 text = TEXTS[f"text{choice}"]
@@ -106,3 +104,4 @@ print("-" * 40)
 for length in sorted(length_freq):
     stars = '*' * length_freq[length]
     print(f"{length:3}|{stars:<18}|{length_freq[length]}")
+
