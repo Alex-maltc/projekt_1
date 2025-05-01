@@ -1,3 +1,10 @@
+"""
+projekt_1.py: první projekt do Engeto Online Python Akademie
+
+author: Aleksei Maltcev
+email: alexmal@post.cz
+"""
+
 import re
 TEXTS = {
     "text1": '''Situated about 10 miles west of Kemmerer,
