@@ -4,6 +4,7 @@ author: Aleksei Maltcev
 email: alexmal@post.cz
 """
 import re
+
 TEXTS = {
     "text1": '''Situated about 10 miles west of Kemmerer,
     Fossil Butte is a ruggedly impressive
@@ -35,30 +36,36 @@ TEXTS = {
 }
 
 
-data = {'user1' : 'password1', 'user2' : 'password2'}
+
+data = {'bob': '123', 'ann': 'pass123', 'mike': 'password123', 'liz': "pass123"}
+
 flag = False
 qty_try = 3
- 
+logged_user = None
+
 while qty_try:
     qty_try -= 1
-    if  data.get(input(" Vložte jméno uživatele: ")) == input("Vložte heslo uživatele: "):
+    username = input("Vložte jméno uživatele: ")
+    password = input("Vložte heslo uživatele: ")
+
+    if data.get(username) == password:
         flag = True
+        logged_user = username
         break
     elif qty_try != 0:
         print(f"Neplatné údaje!, zbývají {qty_try} pokusy!")
-    
+
 if flag:
     print("Přihlášení úspěšné!")
+    print(f"Přihlášený uživatel: {logged_user}")
 else:
     print("Neplatné údaje! Program ukončen.")
     exit()
 
-
-
-choice = input("Vyberte text (1, 2 nebo 3): ")
+choice = input("📖 Vyberte text (1, 2 nebo 3): ")
 
 if choice not in ["1", "2", "3"]:
-    print("Neplatná volba! Program končí.")
+    print("❌ Neplatná volba! Program končí.")
     exit()
 
 text = TEXTS[f"text{choice}"]
@@ -82,15 +89,15 @@ count_numbers = len(re.findall(r'\d+', text))
 # Suma všech čísel 
 sum_numbers = sum(map(int, re.findall(r'\d+', text)))
 
-print(f"\n Výsledky analýzy textu č.{choice}:\n")
+print(f"\n📊 Výsledky analýzy textu č.{choice}:\n")
 print(f"Počet slov: {'*' * count_words} {count_words}") 
 print(f"Počet slov začínajících velkým písmenem: {'*' * count_upper_case_letters} {count_upper_case_letters}")
 print(f"Počet slov psaných velkými písmeny: {'*' * count_upper_case_words} {count_upper_case_words}")
 print(f"Počet slov psaných malými písmeny: {'*' * count_lower_case_letters} {count_lower_case_letters}")
 print(f"Počet čísel: {'*' * count_numbers} {count_numbers}")
-print(f"The sum of all the numbers {sum_numbers}")
+print(f"Suma všech čísel: {sum_numbers}")
 
-# Sloupcový graf: četnost délek slov
+# 📊 Sloupcový graf: četnost délek slov
 word_lengths = [len(word) for word in re.findall(r'\b\w+\b', text)]
 length_freq = {}
 
@@ -104,4 +111,3 @@ print("-" * 40)
 for length in sorted(length_freq):
     stars = '*' * length_freq[length]
     print(f"{length:3}|{stars:<18}|{length_freq[length]}")
-
