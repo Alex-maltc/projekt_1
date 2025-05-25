@@ -62,10 +62,10 @@ else:
     print("Neplatné údaje! Program ukončen.")
     exit()
 
-choice = input("📖 Vyberte text (1, 2 nebo 3): ")
+choice = input("Vyberte text (1, 2 nebo 3): ")
 
 if choice not in ["1", "2", "3"]:
-    print("❌ Neplatná volba! Program končí.")
+    print(" Neplatná volba! Program končí.")
     exit()
 
 text = TEXTS[f"text{choice}"]
@@ -89,7 +89,7 @@ count_numbers = len(re.findall(r'\d+', text))
 # Suma všech čísel 
 sum_numbers = sum(map(int, re.findall(r'\d+', text)))
 
-print(f"\n📊 Výsledky analýzy textu č.{choice}:\n")
+print(f"\n Výsledky analýzy textu č.{choice}:\n")
 print(f"Počet slov: {'*' * count_words} {count_words}") 
 print(f"Počet slov začínajících velkým písmenem: {'*' * count_upper_case_letters} {count_upper_case_letters}")
 print(f"Počet slov psaných velkými písmeny: {'*' * count_upper_case_words} {count_upper_case_words}")
@@ -97,7 +97,7 @@ print(f"Počet slov psaných malými písmeny: {'*' * count_lower_case_letters} 
 print(f"Počet čísel: {'*' * count_numbers} {count_numbers}")
 print(f"Suma všech čísel: {sum_numbers}")
 
-# 📊 Sloupcový graf: četnost délek slov
+# Sloupcový graf: četnost délek slov
 word_lengths = [len(word) for word in re.findall(r'\b\w+\b', text)]
 length_freq = {}
 
