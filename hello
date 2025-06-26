@@ -56,8 +56,8 @@ while qty_try:
         print(f"Neplatné údaje!, zbývají {qty_try} pokusy!")
 
 if flag:
-    print("Přihlášení úspěšné!")
-    print(f"Přihlášený uživatel: {logged_user}")
+    print(f"Welcome to the app, {logged_user}")
+    print("We have 3 texts to be analyzed.")
 else:
     print("Neplatné údaje! Program ukončen.")
     exit()
