@@ -14,7 +14,7 @@ TEXTS = {
     above sea level. The butte is located just
     north of US 30 and the Union Pacific Railroad,
     which traverse the valley.''',
-    
+
     "text2": '''At the base of Fossil Butte are the bright
     red, purple, yellow and gray beds of the Wasatch
     Formation. Eroded portions of these horizontal
@@ -23,7 +23,7 @@ TEXTS = {
     to the top of the butte are the much steeper
     buff-to-white beds of the Green River Formation,
     which are about 300 feet thick.''',
-    
+
     "text3": '''The monument contains 8198 acres and protects
     a portion of the largest deposit of freshwater fish
     fossils in the world. The richest fossil fish deposits
@@ -34,8 +34,6 @@ TEXTS = {
     in modern oceans. Other fish such as paddlefish,
     garpike and stingray are also present.'''
 }
-
-
 
 data = {'bob': '123', 'ann': 'pass123', 'mike': 'password123', 'liz': "pass123"}
 
@@ -66,24 +64,22 @@ choice = input("Vyberte text (1, 2 nebo 3): ")
 
 if choice in ["1", "2", "3"]:
     print(f"Enter a number btw. 1 and 3 to select: {choice}")
+    text = TEXTS[f"text{choice}"]
 else:
     print("Neplatná volba! Program končí.")
-exit()
-
-text = TEXTS
-
+    exit()
 
 # Počet slov
-count_words = len(re.findall(r'[a-zA-Z]+', text))
+count_words = len(re.findall(r'\b[a-zA-Z]+\b', text))
 
-# Počet slov začínajících velkým písmenem
-count_upper_case_letters = len(re.findall(r'\b[A-Z][a-z]*\b', text))
+# Počet slov začínajících velkým písmenem (Title Case)
+count_titlecase = len(re.findall(r'\b[A-Z][a-z]+\b', text))
 
-# Počet slov psaných velkými písmeny
-count_upper_case_words = len(re.findall(r'\b[A-Z]+\b', text))
+# Počet slov psaných VELKÝMI PÍSMENY
+count_uppercase = len(re.findall(r'\b[A-Z]{2,}\b', text))
 
-# Počet malých písmen
-count_lower_case_letters = len(re.findall(r'\b[a-z]+\b', text))
+# Počet slov psaných malými písmeny
+count_lowercase = len(re.findall(r'\b[a-z]+\b', text))
 
 # Počet čísel
 count_numbers = len(re.findall(r'\d+', text))
@@ -91,11 +87,11 @@ count_numbers = len(re.findall(r'\d+', text))
 # Suma všech čísel 
 sum_numbers = sum(map(int, re.findall(r'\d+', text)))
 
-print(f"\n Výsledky analýzy textu č.{choice}:\n")
-print(f"There are {'*' * count_words} {count_words} words in the selected text.") 
-print(f"There are {'*' * count_upper_case_letters} {count_upper_case_letters} titlecase words")
-print(f"Počet slov psaných velkými písmeny: {'*' * count_upper_case_words} {count_upper_case_words}")
-print(f"Počet slov psaných malými písmeny: {'*' * count_lower_case_letters} {count_lower_case_letters}")
+print(f"\nVýsledky analýzy textu č.{choice}:\n")
+print(f"There are {count_words} words in the selected text.") 
+print(f"There are {count_titlecase} titlecase words.")
+print(f"Počet slov psaných VELKÝMI PÍSMENY: {'*' * count_uppercase} {count_uppercase}")
+print(f"Počet slov psaných malými písmeny: {'*' * count_lowercase} {count_lowercase}")
 print(f"Počet čísel: {'*' * count_numbers} {count_numbers}")
 print(f"Suma všech čísel: {sum_numbers}")
 
@@ -106,9 +102,7 @@ length_freq = {}
 for length in word_lengths:
     length_freq[length] = length_freq.get(length, 0) + 1
 
-# Formátovaný výstup ve stylu:
-# LEN|  OCCURENCES  |NR.
-print("\nLEN|  OCCURENCES  |NR.")
+print("\nLEN|  OCCURENCES       |NR.")
 print("-" * 40)
 for length in sorted(length_freq):
     stars = '*' * length_freq[length]
