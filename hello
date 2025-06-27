@@ -51,7 +51,7 @@ while qty_try:
         logged_user = username
         break
     elif qty_try != 0:
-        print(f"Neplatné údaje!, zbývají {qty_try} pokusy!")
+        print(f"Try again, you have {qty_try} attempts!")
 
 if flag:
     print(f"Welcome to the app, {logged_user}")
@@ -81,7 +81,7 @@ count_numbers = len(re.findall(r'\d+', text))
 
 sum_numbers = sum(map(int, re.findall(r'\d+', text)))
 
-print(f"\nVýsledky analýzy textu č.{choice}:\n")
+print(f"\n Results number {choice}:\n")
 print(f"There are {count_words} words in the selected text.") 
 print(f"There are {count_titlecase} titlecase words.")
 print(f"There are {count_uppercase} uppercase words.")
