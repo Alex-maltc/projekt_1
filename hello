@@ -43,8 +43,8 @@ logged_user = None
 
 while qty_try:
     qty_try -= 1
-    username = input("Vložte jméno uživatele: ")
-    password = input("Vložte heslo uživatele: ")
+    username = input("Login")
+    password = input("Password")
 
     if data.get(username) == password:
         flag = True
@@ -60,42 +60,36 @@ else:
     print("unregistered user, terminating the program..")
     exit()
 
-choice = input("Vyberte text (1, 2 nebo 3): ")
+choice = input("Choose text (1, 2 nebo 3): ")
 
 if choice in ["1", "2", "3"]:
     print(f"Enter a number btw. 1 and 3 to select: {choice}")
     text = TEXTS[f"text{choice}"]
 else:
-    print("Neplatná volba! Program končí.")
+    print("It was a bad choice! Terminating the program.")
     exit()
 
-# Počet slov
 count_words = len(re.findall(r'\b[a-zA-Z]+\b', text))
 
-# Počet slov začínajících velkým písmenem (Title Case)
 count_titlecase = len(re.findall(r'\b[A-Z][a-z]+\b', text))
 
-# Počet slov psaných VELKÝMI PÍSMENY
 count_uppercase = len(re.findall(r'\b[A-Z]{2,}\b', text))
 
-# Počet slov psaných malými písmeny
 count_lowercase = len(re.findall(r'\b[a-z]+\b', text))
 
-# Počet čísel
 count_numbers = len(re.findall(r'\d+', text))
 
-# Suma všech čísel 
 sum_numbers = sum(map(int, re.findall(r'\d+', text)))
 
 print(f"\nVýsledky analýzy textu č.{choice}:\n")
 print(f"There are {count_words} words in the selected text.") 
 print(f"There are {count_titlecase} titlecase words.")
-print(f"Počet slov psaných VELKÝMI PÍSMENY: {'*' * count_uppercase} {count_uppercase}")
-print(f"Počet slov psaných malými písmeny: {'*' * count_lowercase} {count_lowercase}")
-print(f"Počet čísel: {'*' * count_numbers} {count_numbers}")
-print(f"Suma všech čísel: {sum_numbers}")
+print(f"There are {count_uppercase} uppercase words.")
+print(f"There are {count_lowercase} lowercase words.")
+print(f"There are {count_numbers} numeric strings.")
+print(f"The sum of all the numbers {sum_numbers}")
 
-# Sloupcový graf: četnost délek slov
+
 word_lengths = [len(word) for word in re.findall(r'\b\w+\b', text)]
 length_freq = {}
 
